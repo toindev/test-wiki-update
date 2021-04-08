@@ -31,7 +31,7 @@ jobs:
         git config --local http.sslVerify false
         git config --local user.email "${INPUT_AUTHOR_EMAIL}"
         git config --local user.name "${INPUT_AUTHOR_NAME}"
-        git config --list --global
+        git config --list --local
         git add -A
         git commit -m "Auto-update from documentation folder"
         git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git
