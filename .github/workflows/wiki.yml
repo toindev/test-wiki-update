@@ -27,7 +27,6 @@ jobs:
 
     - name: Update wiki from documentation folder
       run: |
-        rsync -avh --exclude .git project/documentation/ wiki/ --delete
         cd wiki
         git config http.sslVerify false
         git config --local user.email "${INPUT_AUTHOR_EMAIL}"
@@ -36,3 +35,6 @@ jobs:
         git add -A
         git commit -m "Auto-update from documentation folder"
         git push https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git
+
+#rsync -avh --exclude .git project/documentation/ wiki/ --delete
+        
