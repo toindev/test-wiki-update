@@ -27,6 +27,7 @@ jobs:
 
     - name: Update wiki from documentation folder
       run: |
+        rsync -avh --exclude .git project/documentation/ wiki/ --delete
         cd wiki
         git config --local http.sslVerify false
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,5 +41,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
 
-#rsync -avh --exclude .git project/documentation/ wiki/ --delete
         
