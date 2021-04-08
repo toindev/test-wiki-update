@@ -16,12 +16,19 @@ jobs:
 
     - name: Checkout the project
       uses: actions/checkout@v2
+      with:
+        path: project
 
     - name: Checkout the Wiki repository
       uses: actions/checkout@v2
       with:
         repository: ${{ github.repository }}.wiki
+        path: wiki
 
     - name: Update wiki from documentation folder
       run: |
-        ls -la
+        rsync -avh --exclude .git project/documentation/ wiki/ --delete
+        cd wiki
+        git add .
+        git commit -m "Auto-update from documentation folder"
+        git push
