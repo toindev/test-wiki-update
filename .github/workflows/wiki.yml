@@ -28,7 +28,7 @@ jobs:
     - name: Update wiki from documentation folder
       run: |
         cd wiki
-        git config http.sslVerify false
+        git config --local http.sslVerify false
         git config --local user.email "${INPUT_AUTHOR_EMAIL}"
         git config --local user.name "${INPUT_AUTHOR_NAME}"
         git config --list --global
